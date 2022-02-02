@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/01/28 15:54:44 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/02 15:28:16 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,28 @@
 
 int moove_player(int keycode, t_datastock *datacube)
 {
-    if (keycode == DROITE)
-        datacube->depy++;
-    if (keycode == GAUCHE)
-        datacube->depy--;
-    if (keycode == HAUT)
-        datacube->depy--;
-    if (keycode == BAS)
-        datacube->depy++;
-    ft_putnbr_fd(datacube->depy, 1);
-
-    return (0);
+    int	x;
+	int y;
+	
+	x = datacube->raycast.posx;
+	y = datacube->raycast.posy;
+	if (keycode == DROITE && datacube->map[datacube->raycast.posy / 40][(datacube->raycast.posx + 10)/ 40] != '1')
+		datacube->raycast.posx++;
+	if (keycode == GAUCHE && datacube->map[(datacube->raycast.posy) / 40][(datacube->raycast.posx) / 40] != '1')
+    {
+		ft_putnbr_fd(datacube->raycast.posx, 1);
+	    datacube->raycast.posx--;
+	}
+	if (keycode == HAUT && datacube->map[(datacube->raycast.posy) / 40][(datacube->raycast.posx) / 40] != '1')
+		datacube->raycast.posy--;
+    if (keycode == BAS && datacube->map[(datacube->raycast.posy + 10) / 40][(datacube->raycast.posx)/ 40] != '1') 
+        datacube->raycast.posy++;
+    //ft_putnbr_fd(datacube->raycast.posy, 1);
+	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img, 0, 0);
+	fill_minimap(datacube);
+    //mlx_destroy_image(datacube->display.mlx_ptr, datacube->display.img_player);
+	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
+	return (0);
 }
 
 void fill_img(int *img, int color, int width, int height)
@@ -47,11 +58,6 @@ void fill_minimap(t_datastock *datacube)
 	int	y;
 	int	cx;
 	int	cy;
-	void *img;
-	int *tab_data;
-	int     bpp;
-	int     size_line;
-	int     endian;
 
 	x = 0;
 	y = 0;
@@ -63,16 +69,21 @@ void fill_minimap(t_datastock *datacube)
 		while (x < datacube->width)
 		{
 			cx += 40;
+			if (datacube->map[y][x] == '1')	
+				mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img_wall, cx, cy);
+			if (datacube->map[y][x] == '0')	
+				mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img_empty, cx, cy);
 			if (x == datacube->depy && y == datacube->depx) 
-				img = mlx_new_image(datacube->display.mlx_ptr, 10, 10);
-			else
-				img = mlx_new_image(datacube->display.mlx_ptr, 40, 40);
-			tab_data = (int *)mlx_get_data_addr(img , &bpp, &size_line, &endian);
-			if (datacube->map[y][x] == '1')
-				fill_img(tab_data, 135245251, 40, 40);			
+
 			if (x == datacube->depy && y == datacube->depx) 
-				fill_img(tab_data, 11714279, 20, 20);
-			mlx_put_image_to_window(datacube->display.mlx_ptr, datacube->display.mlx_win, img, cx, cy);
+			{
+			
+				if (datacube->raycast.posx == 0 && datacube->raycast.posy == 0)
+				{
+					datacube->raycast.posx = cx;
+					datacube->raycast.posy = cy;
+				}
+			}
 			x++;
 		}
 		cy += 40;
@@ -80,15 +91,27 @@ void fill_minimap(t_datastock *datacube)
 	}
 }
 
-void init_mini(t_datastock *datacube)
-{	
-	datacube->display.mlx_ptr = mlx_init();
-	datacube->display.mlx_win = mlx_new_window(datacube->display.mlx_ptr, datacube->width * 40, datacube->height * 40, "Hello world!");
-	//datacube->display.img_mini = mlx_new_image(datacube->display.mlx_ptr, datacube->width * 40, datacube->height * 40);
-	//datacube->display.img_mini_data = (int *)mlx_get_data_addr(datacube->display.img_mini , &bpp, &size_line, &endian);
-	//fill_img(datacube->display.img_mini_data, 135245251, datacube->width * 40, datacube->height * 40);
-	//datacube->display.img_data[datacube->depy * WIDTH / 4 + datacube->depx] = 135245251;
+void init_minimap(t_datastock *datacube)
+{
+	int     bpp;
+	int     size_line;
+	int     endian;
+
+	datacube->rx_mini = datacube->rx / 2;
+	datacube->ry_mini = datacube->ry / 2;
+	datacube->mini.img =  mlx_new_image(datacube->mlx_ptr, 40 * datacube->width, 40 * datacube->height);
+	datacube->mini.img_data = (int *)mlx_get_data_addr(datacube->mini.img, &bpp, &size_line, &endian);
+	fill_img(datacube->mini.img_data, 025500, 40 * datacube->width, 40 * datacube->height);
+	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img, 0, 0);
+	datacube->mini.img_player =  mlx_new_image(datacube->mlx_ptr, 10, 10);
+	datacube->mini.img_wall  =  mlx_new_image(datacube->mlx_ptr, 40, 40);
+	datacube->mini.img_empty  =  mlx_new_image(datacube->mlx_ptr, 40, 40);
+	datacube->mini.data_wall = (int *)mlx_get_data_addr(datacube->mini.img_wall, &bpp, &size_line, &endian);
+	datacube->mini.data_player = (int *)mlx_get_data_addr(datacube->mini.img_player, &bpp, &size_line, &endian);
+	datacube->mini.data_empty = (int *)mlx_get_data_addr(datacube->mini.img_empty, &bpp, &size_line, &endian);
+	fill_img(datacube->mini.data_wall, 135245251, 40, 40);			
+	fill_img(datacube->mini.data_empty, 025500, 40, 40);
+	fill_img(datacube->mini.data_player, 11714279, 10, 10);
 	fill_minimap(datacube);
-	mlx_hook(datacube->display.mlx_win, 2, 1L << 0, moove_player, datacube);
-    mlx_loop(datacube->display.mlx_ptr);
+	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
 }

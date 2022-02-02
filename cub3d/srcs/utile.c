@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:40:56 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/01/26 21:01:10 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/01/31 15:38:49 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void free_data(t_datastock *datacube)
 		free(datacube->we);
 	if (datacube->ea != NULL) 
 		free(datacube->ea);
-	if (datacube->map != NULL)
-		free_tab(datacube->map);
+	//if (datacube->map != NULL)
+	//	free_tab(datacube->map);
 	if (datacube != NULL)
 		free(datacube);	
 }

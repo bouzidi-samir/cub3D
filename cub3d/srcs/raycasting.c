@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/22 09:07:49 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/02/01 13:53:44 by samirbouzid      ###   ########.fr       */
+/*   Created: 2022/02/02 14:19:05 by samirbouzid       #+#    #+#             */
+/*   Updated: 2022/02/02 15:53:28 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/cub3d.h"
 
-int	ft_strlen(const char *s)
+int		ft_raycasting(t_datastock *datacube)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	datacube->raycast.x = 0;
+	while (datacube->raycast.x < datacube->rx)
+	{
+		ft_init_raycast2(datacube);
+		//ft_stepsidedist(recup);
+		//ft_color_column(recup);		
+		datacube->raycast.x++;
+	}
+	//mlx_put_image_to_window(recup->data.mlx_ptr, recup->data.mlx_win,
+			//recup->data.img, 0, 0);
+	
+	return (0);
 }

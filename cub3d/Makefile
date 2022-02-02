@@ -6,7 +6,7 @@
 #    By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:17:40 by samirbouzid       #+#    #+#              #
-#    Updated: 2022/01/28 15:20:42 by samirbouzid      ###   ########.fr        #
+#    Updated: 2022/02/02 14:19:56 by samirbouzid      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,12 @@ LIB_MAC=-L./libft -lft -I/usr/local/include -L/usr/local/lib -lmlx -framework Op
 LIB=$(LIB_MY)
 
 SRCS= ./srcs/main.c \
+		./srcs/init.c \
 		./srcs/text_parsing.c \
 		./srcs/color_parsing.c \
 		./srcs/map_parsing.c \
+		./srcs/map_utile.c \
+		./srcs/raycasting.c \
 		./srcs/utile.c \
 		./srcs/utile2.c \
 		./srcs/minimap.c \

@@ -6,26 +6,11 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 11:44:39 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/01/26 22:20:04 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/01 15:07:37 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int		get_depart_position(char c, t_datastock *datacube, int i, int j)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-	{
-		datacube->player = 1;
-        if (datacube->depart != 'o')
-            datacube->multijoueurs = 1;
-        datacube->depart = c;
-		datacube->depx = i;
-		datacube->depy = j;
-		return (1);
-	}
-	return (0);
-}
 
 int		get_map(char *str, t_datastock *datacube)
 {
@@ -40,15 +25,8 @@ int		get_map(char *str, t_datastock *datacube)
 	{
 		if (get_depart_position(str[j], datacube, i, j) == 1)
 			datacube->map[i][j] = '0';
-		else if (str[j] == ' ')
-			datacube->map[i][j] = '1';
 		else
 			datacube->map[i][j] = str[j];
-		j++;
-	}
-	while (j <= (datacube->width - 1))
-	{
-		datacube->map[i][j] = '1';
 		j++;
 	}
 	datacube->map[i][j] = '\0';

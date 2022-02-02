@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:13:31 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/01/26 20:56:22 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/02 15:06:20 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,40 @@ void check_texture(char *str, t_datastock *datacube)
 	j++;
 }
 
+void	ft_get_texture_adress(t_datastock *datacube)
+{
+	datacube->text[0].img_data = (int *)mlx_get_data_addr(datacube->text[0].img,
+			&datacube->text[0].bpp,
+			&datacube->text[0].size_line, &datacube->text[0].endian);
+	datacube->text[1].img_data = (int *)mlx_get_data_addr(datacube->text[1].img,
+			&datacube->text[1].bpp,
+			&datacube->text[1].size_line, &datacube->text[1].endian);
+	datacube->text[2].img_data = (int *)mlx_get_data_addr(datacube->text[2].img,
+			&datacube->text[2].bpp,
+			&datacube->text[2].size_line, &datacube->text[2].endian);
+	datacube->text[3].img_data = (int *)mlx_get_data_addr(datacube->text[3].img,
+			&datacube->text[3].bpp,
+			&datacube->text[3].size_line, &datacube->text[3].endian);
+}
+
+int	texture_parse(t_datastock *datacube)
+{
+	if (!(datacube->text[0].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
+					datacube->no, &(datacube->text[0].width),
+					&(datacube->text[0].height))))
+		return (1);
+	if (!(datacube->text[1].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
+					datacube->so, &(datacube->text[1].width),
+					&(datacube->text[1].height))))
+		return (1);
+	if (!(datacube->text[2].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
+					datacube->we, &(datacube->text[2].width),
+					&(datacube->text[2].height))))
+		return (1);
+	if (!(datacube->text[3].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
+					datacube->ea, &(datacube->text[3].width),
+					&(datacube->text[3].height))))
+		return (1);
+	ft_get_texture_adress(datacube);
+	return (0);
+}

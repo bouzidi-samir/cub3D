@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 07:25:29 by sbouzidi          #+#    #+#             */
-/*   Updated: 2022/01/24 01:18:39 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/02 10:47:12 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strchr(char const *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(char const *s)
+int	ft_strlen(char const *s)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!s || start >= ft_strlen(s))
+	if (!s || (int)start >= ft_strlen(s))
 		return (ft_strdup(""));
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)

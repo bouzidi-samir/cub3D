@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/01/28 15:20:03 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/01 14:38:09 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,16 @@ int		is_wall(char *str)
 	return (0);
 }
 
-int		ft_check_wall(t_datastock *datacube)
+/*int		ft_check_wall(t_datastock *datacube)
 {
 	int i;
 
 	i = 0;
-	//ft_putchar_fd(datacube->map[0][0], 1);
+	//ft_putchar_fd(datacube->map[1][5], 1);
     while (i < datacube->height)
 	{
-		if (datacube->map[i][0] != '1' || datacube->map[i][0] == ' ' )
-		{
-            ft_putendl_fd("here", 1);
+		if (datacube->map[i][0] != '1')
         	return (1);
-        }
         i++;
 	}
 	i = 0;
@@ -48,22 +45,20 @@ int		ft_check_wall(t_datastock *datacube)
 			return (1);
 		i++;
 	}
-	if (is_wall(datacube->map[0]) == 1)
-		return (1);
-	if (is_wall(datacube->map[datacube->height - 1]) == 1)
-		return (1);
 	return (0);
-}
+}*/
 
-int ft_error(t_datastock *datacube)
+int ft_error(t_datastock *datacube, int err)
 {
+	if (err == 3)
+		ft_putendl_fd("Error: Problem with the xpm file", 2);
 	if (datacube->error == 2)
 		ft_putendl_fd("Error: Textures informations are wrong", 2);
 	if (datacube->error == 3)
 		ft_putendl_fd("Error: Colors informations are wrong", 2);
 	if (datacube->width == 0 || datacube->height == 0)
 		ft_putendl_fd("Error: No map in the file", 2);
-	if (datacube->emptyline != 0)
+	if (datacube->emptyline != 0 && datacube->inmap == 1) 
 		ft_putendl_fd("Error: The map has an empty line", 2);
 	if (datacube->bad_char != 0)
 		ft_putendl_fd("Error: The map has a wrong character", 2);
@@ -73,30 +68,28 @@ int ft_error(t_datastock *datacube)
 		ft_putendl_fd("Error: The map has more than one player", 2);
 	if (datacube->wrongwall != 0)
 		ft_putendl_fd("Error: The wall is not close", 2);
+	err = 0;
 	datacube->err = 1;
 	return (0);
 }
 
-int check_error(char *file, t_datastock *datacube)
+int		ft_exit(t_datastock *datcube)
 {
-    if (datacube->error == 2 || datacube->width == 0 || datacube->height == 0)
-	{	
-		ft_error(datacube);
-		return (1);
-	}	
-	datacube->inmap = 1;
-	parsing_map(file, datacube);
-	if (datacube->bad_char != 0 || datacube->emptyline != 0 || datacube->multijoueurs != 0 || datacube->player == 0)
-    {
-	    ft_error(datacube);
-		return (1);
-	}
-    if (ft_check_wall(datacube) != 0)
-    {
-        datacube->wrongwall = 1;
-        ft_error(datacube);
-		return (1);
-    }
-    return (0);
+//	if (recup->indicateur3 == 0)
+//		ft_error(recup, "Non jrigole\n");
+	if (datcube->three_d.img)
+		mlx_destroy_image(datcube->mlx_ptr, datcube->three_d.img);
+	if (datcube->text[0].img)
+		mlx_destroy_image(datcube->mlx_ptr, datcube->text[0].img);
+	if (datcube->text[1].img)
+		mlx_destroy_image(datcube->mlx_ptr, datcube->text[1].img);
+	if (datcube->text[2].img)
+		mlx_destroy_image(datcube->mlx_ptr, datcube->text[2].img);
+	if (datcube->text[3].img)
+		mlx_destroy_image(datcube->mlx_ptr, datcube->text[3].img);
+	if (datcube->mlx_win)
+		mlx_destroy_window(datcube->mlx_ptr, datcube->mlx_win);
+	free_data(datcube);
+	datcube->rx = 0;
+	exit(0);
 }
-

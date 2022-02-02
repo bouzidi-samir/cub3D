@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 07:28:54 by sbouzidi          #+#    #+#             */
-/*   Updated: 2021/08/21 14:25:11 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/01 13:55:38 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(char const *s1);
 char			*ft_strjoin(char *s1, char *s2);
 char			*ft_strchr(char const *s, int c);
-size_t			ft_strlen(char const *s);
+int             ft_strlen(char const *s);
 
 #endif
