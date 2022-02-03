@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/02 15:54:52 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/03 14:29:13 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_parsing(char *file, t_datastock *datacube)
 	close(fd);
 	return (0);
 }
+//fonction qui dessine une image entière et lit les données à chaque fois.
 
 int init_display(t_datastock *datacube)
 {	

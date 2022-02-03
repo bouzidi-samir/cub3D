@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:14 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/02 15:26:16 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/02 20:40:34 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	ft_init_raycast(t_datastock *datacube)
 	datacube->three_d.right = 0;
 	datacube->three_d.rotate_right = 0;
 	datacube->three_d.rotate_left = 0;
-	datacube->raycast.posx = (double)datacube->dx + 0.5;
-	datacube->raycast.posy = (double)datacube->dy + 0.5;
+	datacube->raycast.posx = (double)datacube->depx + 0.5;
+	datacube->raycast.posy = (double)datacube->depy + 0.5;
 	datacube->raycast.dirx = 0;
 	datacube->raycast.diry = 0;
 	datacube->raycast.planx = 0;
