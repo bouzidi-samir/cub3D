@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:19:05 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/03 15:52:58 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/03 15:57:15 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_ray_progress(t_datastock *datacube)
 		if (datacube->map[datacube->raycast.mapx][datacube->raycast.mapy] == '1')
 			datacube->raycast.hit = 1;
 	}
-	ft_ray_progress(datacube);
+	//ft_ray_progress(datacube);
 }
 
 void	ft_get_distance(t_datastock *datacube)
@@ -62,7 +62,7 @@ void	ft_get_distance(t_datastock *datacube)
 		datacube->raycast.sidedisty = (datacube->raycast.mapy + 1.0 - datacube->raycast.posy) \
 							* datacube->raycast.deltadisty;
 	}
-	//ft_incrementray(recup);
+	ft_ray_progress(datacube);
 }
 
 // fonction de raycasting qui passe par tous les x
