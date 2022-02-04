@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 13:23:57 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 23:06:22 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,19 @@ int start_game(t_datastock *datacube)
 		ft_error(datacube, 3);
 		return (1);
 	}
-	datacube->mlx_win = mlx_new_window(datacube->mlx_ptr, datacube->rx, datacube->ry, "Hello world!");
-	ft_putnbr_fd(datacube->raycast.posx, 1);
+	//datacube->mlx_win = mlx_new_window(datacube->mlx_ptr, datacube->rx, datacube->ry, "Hello world!");
 	datacube->three_d.img = mlx_new_image(datacube->mlx_ptr, datacube->rx, datacube->ry);
 	datacube->three_d.img_data = (int *)mlx_get_data_addr(datacube->three_d.img, &datacube->three_d.
 			bpp, &datacube->three_d.size_line, &datacube->three_d.endian);
+	datacube->three_d.img2 = mlx_new_image(datacube->mlx_ptr, datacube->rx, datacube->ry);
+	datacube->three_d.img_data2 = (int *)mlx_get_data_addr(datacube->three_d.img2, &datacube->
+			three_d.bpp, &datacube->three_d.size_line, &datacube->three_d.endian);
+	datacube->mlx_win = mlx_new_window(datacube->mlx_ptr, datacube->rx, datacube->ry, "Hello world!");
 	ft_raycasting(datacube);
-	//init_minimap(datacube);
 	mlx_hook(datacube->mlx_win, 17, 0, ft_exit, datacube);
-	mlx_hook(datacube->mlx_win, 2, 1L << 0, moove_player, datacube);
+	mlx_hook(datacube->mlx_win, 2, 1L << 0, key_press, datacube);
+	mlx_loop_hook(datacube->mlx_ptr, ft_raycasting, datacube);
+	mlx_hook(datacube->mlx_win, 3, 1L << 1, key_release, datacube);
 	mlx_hook(datacube->mlx_win, 33, 1L << 17, ft_exit, datacube);
 	mlx_loop(datacube->mlx_ptr);
 	return (0);

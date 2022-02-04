@@ -5,57 +5,95 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 13:22:39 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 13:22:53 by samirbouzid      ###   ########.fr       */
+/*   Created: 2022/02/04 14:04:04 by samirbouzid       #+#    #+#             */
+/*   Updated: 2022/02/04 22:44:07 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-/*
-void	ft_draw_texture(t_recup *recup, int x, int y)
+
+void	front_back(t_datastock *datacube)
 {
-	y = recup->ray.drawstart - 1;
-	ft_init_texture(recup);
-	recup->t.step = 1.0 * recup->texture[0].height / recup->ray.lineheight;
-	recup->t.texx = (int)(recup->t.wallx * (double)recup->texture
-			[recup->t.texdir].width);
-	if (recup->ray.side == 0 && recup->ray.raydirx > 0)
-		recup->t.texx = recup->texture[recup->t.texdir].width -
-			recup->t.texx - 1;
-	if (recup->ray.side == 1 && recup->ray.raydiry < 0)
-		recup->t.texx = recup->texture[recup->t.texdir].width -
-			recup->t.texx - 1;
-	recup->t.texpos = (recup->ray.drawstart - recup->ry / 2 +
-			recup->ray.lineheight / 2) * recup->t.step;
-	while (++y <= recup->ray.drawend)
+	if (datacube->three_d.forward == 1)
 	{
-		recup->t.texy = (int)recup->t.texpos &
-			(recup->texture[recup->t.texdir].height - 1);
-		recup->t.texpos += recup->t.step;
-		if (y < recup->ry && x < recup->rx)
-			recup->data.addr[y * recup->data.line_length / 4 + x] =
-				recup->texture[recup->t.texdir].addr[recup->t.texy *
-					recup->texture[recup->t.texdir].line_length /
-					4 + recup->t.texx];
+		if (datacube->map[(int)(datacube->raycast.posx + (datacube->raycast.dirx * datacube->
+						raycast.movespeed * 2))][(int)datacube->raycast.posy] == '0')
+			datacube->raycast.posx += datacube->raycast.dirx * datacube->raycast.movespeed;
+		if (datacube->map[(int)(datacube->raycast.posx)][(int)(datacube->raycast.posy +
+					(datacube->raycast.diry * datacube->raycast.movespeed * 2))] == '0')
+			datacube->raycast.posy += datacube->raycast.diry * datacube->raycast.movespeed;
 	}
-}*/
+	if (datacube->three_d.back == 1)
+	{
+		if (datacube->map[(int)(datacube->raycast.posx - (datacube->raycast.dirx * datacube->
+						raycast.movespeed * 2))][(int)(datacube->raycast.posy)] == '0')
+			datacube->raycast.posx -= datacube->raycast.dirx * datacube->raycast.movespeed;
+		if (datacube->map[(int)(datacube->raycast.posx)][(int)(datacube->raycast.posy -
+					(datacube->raycast.diry * datacube->raycast.movespeed * 2))] == '0')
+			datacube->raycast.posy -= datacube->raycast.diry * datacube->raycast.movespeed;
+	}
+}
 
-int		ft_col_draw(t_datastock *datacube)
+void	ft_left_right(t_datastock *datacube)
 {
-	int j;
-	int i;
+	if (datacube->three_d.right == 1)
+	{
+		if (datacube->map[(int)(datacube->raycast.posx + datacube->raycast.diry *
+					(datacube->raycast.movespeed * 2))][(int)datacube->raycast.posy] == '0')
+			datacube->raycast.posx += datacube->raycast.diry * datacube->raycast.movespeed;
+		if (datacube->map[(int)datacube->raycast.posx][(int)(datacube->raycast.posy -
+					datacube->raycast.dirx *
+					(datacube->raycast.movespeed * 2))] == '0')
+			datacube->raycast.posy -= datacube->raycast.dirx * datacube->raycast.movespeed;
+	}
+	if (datacube->three_d.left == 1)
+	{
+		if (datacube->map[(int)(datacube->raycast.posx - datacube->raycast.diry *
+					(datacube->raycast.movespeed * 2))][(int)datacube->raycast.posy] == '0')
+			datacube->raycast.posx -= datacube->raycast.diry * datacube->raycast.movespeed;
+		if (datacube->map[(int)datacube->raycast.posx][(int)(datacube->raycast.posy +
+					datacube->raycast.dirx *
+					(datacube->raycast.movespeed * 2))] == '0')
+			datacube->raycast.posy += datacube->raycast.dirx * datacube->raycast.movespeed;
+	}
+}
 
-	j = -1;
-	datacube->raycast.drawend = datacube->ry - datacube->raycast.drawstart;
-	i = datacube->raycast.drawend;
-	while (++j < datacube->raycast.drawstart)
-		datacube->three_d.img_data[j * datacube->three_d.size_line / 4 +
-			datacube->raycast.x] = datacube->c;
-	//if (j <= datacube->raycast.drawend)
-	//	ft_draw_texture(datacube, datacube->raycast.x, j);
-	j = i;
-	while (++j < datacube->ry)
-		datacube->three_d.img_data[j * datacube->three_d.size_line / 4 +
-			datacube->raycast.x] = datacube->f;
-	return (0);
+void	rotate_right_left(t_datastock *datacube)
+{
+	double oldplanx;
+	double olddirx;
+
+	oldplanx = datacube->raycast.planx;
+	olddirx = datacube->raycast.dirx;
+	if (datacube->three_d.rotate_right == 1)
+	{
+		datacube->raycast.dirx = datacube->raycast.dirx * cos(-datacube->raycast.rotspeed / 2) -
+			datacube->raycast.diry * sin(-datacube->raycast.rotspeed / 2);
+		datacube->raycast.diry = olddirx * sin(-datacube->raycast.rotspeed / 2) +
+			datacube->raycast.diry * cos(-datacube->raycast.rotspeed / 2);
+		datacube->raycast.planx = datacube->raycast.planx * cos(-datacube->raycast.rotspeed / 2)
+			- datacube->raycast.plany * sin(-datacube->raycast.rotspeed / 2);
+		datacube->raycast.plany = oldplanx * sin(-datacube->raycast.rotspeed / 2) +
+			datacube->raycast.plany * cos(-datacube->raycast.rotspeed / 2);
+	}
+	left_rotate(datacube, olddirx);
+}
+
+void	left_rotate(t_datastock *datacube, double olddirx)
+{
+	double oldplanex;
+
+	if (datacube->three_d.rotate_left == 1)
+	{
+		olddirx = datacube->raycast.dirx;
+		oldplanex = datacube->raycast.planx;
+		datacube->raycast.dirx = datacube->raycast.dirx * cos(datacube->raycast.rotspeed / 2) -
+			datacube->raycast.diry * sin(datacube->raycast.rotspeed / 2);
+		datacube->raycast.diry = olddirx * sin(datacube->raycast.rotspeed / 2) + datacube->
+			raycast.diry * cos(datacube->raycast.rotspeed / 2);
+		datacube->raycast.planx = datacube->raycast.planx * cos(datacube->raycast.rotspeed / 2) -
+			datacube->raycast.plany * sin(datacube->raycast.rotspeed / 2);
+		datacube->raycast.plany = oldplanex * sin(datacube->raycast.rotspeed / 2) +
+			datacube->raycast.plany * cos(datacube->raycast.rotspeed / 2);
+	}
 }

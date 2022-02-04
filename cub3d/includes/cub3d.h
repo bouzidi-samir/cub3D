@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 13:22:35 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 23:18:38 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,27 @@
 # define HEIGHT	600
 # define BLOC	40
 # define BLOCPLAYER	20
-# define GAUCHE 0
-# define DROITE 2
-# define HAUT 13
-# define BAS 1
+# define LEFT 0
+# define RIGHT 2
+# define TOP 13
+# define BOTTOM 1
 # define ROTATE_LEFT    123
 # define ROTATE_RIGHT   124
 
 typedef struct s_display
 {
+    void    *mlx_ptr;
+    void    *mlx_win;
     void    *img_player;
     void    *img_wall;
     void    *img_empty;
     void	*img;
+    void	*img2;
     int     *data_wall;
     int     *data_player;
     int     *data_empty;
     int    *img_data;
+    int    *img_data2;
     int     bpp;
 	int     size_line;
 	int     endian;    
@@ -55,6 +59,16 @@ typedef struct s_display
 	int	rotate_right;
 	int	minimapechelle;
 } t_display;
+
+typedef struct		s_text
+{
+	int				texdir;
+	double			wallx;
+	int				texx;
+	int				texy;
+	double			step;
+	double			texpos;
+}					t_text;
 
 typedef struct	s_ray
 {
@@ -126,6 +140,7 @@ typedef struct s_datastock
     t_display three_d;
     t_display mini;
     t_display text[4];
+    t_text		t;
     t_ray   raycast;
 } t_datastock;
 
@@ -147,7 +162,7 @@ void	free_tab(char **tab);
 void fill_img(int *img, int color, int width, int height);
 void fill_minimap(t_datastock *datacube);
 int start_game(t_datastock *datacube);
-void init_minimap(t_datastock *datacube);
+int init_minimap(t_datastock *datacube);
 int moove_player(int keycode, t_datastock *datacube);
 int	texture_parse(t_datastock *datacube);
 int		ft_exit(t_datastock *datcube);
@@ -159,5 +174,15 @@ void	ft_init_raycast2(t_datastock *datacube);
 void	ft_init_raycast3(t_datastock *datacube);
 int		ft_raycasting(t_datastock *datacube);
 int		ft_col_draw(t_datastock *datacube);
+void	front_back(t_datastock *datacube);
+void	left_rotate(t_datastock *datacube, double olddirx);
+void	ft_left_right(t_datastock *datacube);
+void	rotate_right_left(t_datastock *datacube);
+void	ft_swap(t_datastock *datacube);
+int		key_press(int keycode, t_datastock *datacube);
+int		key_release(int keycode, t_datastock *datacube);
 
+void	ft_draw_texture(t_datastock *datacube, int x, int y);
+void	ft_init_texture(t_datastock *datacube);
+int		ft_color_column(t_datastock *datacube);
 #endif

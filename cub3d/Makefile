@@ -6,7 +6,7 @@
 #    By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:17:40 by samirbouzid       #+#    #+#              #
-#    Updated: 2022/02/03 13:23:29 by samirbouzid      ###   ########.fr        #
+#    Updated: 2022/02/04 21:12:44 by samirbouzid      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,11 @@ SRCS= ./srcs/main.c \
 		./srcs/map_parsing.c \
 		./srcs/map_utile.c \
 		./srcs/raycasting.c \
+		./srcs/display.c \
+		./srcs/key_detect.c \
 		./srcs/moove.c \
 		./srcs/utile.c \
+		./srcs/test.c \
 		./srcs/utile2.c \
 		./srcs/minimap.c \
 		./srcs/get_next_line.c \
