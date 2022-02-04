@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 20:47:50 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 23:58:24 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int moove_player(int keycode, t_datastock *datacube)
 	
 	x = datacube->raycast.posx;
 	y = datacube->raycast.posy;
-	if (keycode == LEFT && datacube->map[datacube->raycast.posy / 40][(datacube->raycast.posx + 10)/ 40] != '1')
+	if (keycode == LEFT && datacube->map[(int)datacube->raycast.posy / 40][((int)datacube->raycast.posx + 10)/ 40] != '1')
 		datacube->raycast.posx++;
-	if (keycode == RIGHT && datacube->map[(datacube->raycast.posy) / 40][(datacube->raycast.posx) / 40] != '1')
+	if (keycode == RIGHT && datacube->map[((int)datacube->raycast.posy) / 40][((int)datacube->raycast.posx) / 40] != '1')
     {
 		ft_putnbr_fd(datacube->raycast.posx, 1);
 	    datacube->raycast.posx--;
 	}
-	if (keycode == TOP && datacube->map[(datacube->raycast.posy) / 40][(datacube->raycast.posx) / 40] != '1')
+	if (keycode == TOP && datacube->map[((int)datacube->raycast.posy) / 40][((int)datacube->raycast.posx) / 40] != '1')
 		datacube->raycast.posy--;
-    if (keycode == BOTTOM && datacube->map[(datacube->raycast.posy + 10) / 40][(datacube->raycast.posx)/ 40] != '1') 
+    if (keycode == BOTTOM && datacube->map[((int)datacube->raycast.posy + 10) / 40][((int)datacube->raycast.posx)/ 40] != '1') 
         datacube->raycast.posy++;
     //ft_putnbr_fd(datacube->raycast.posy, 1);
 	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img, 0, 0);

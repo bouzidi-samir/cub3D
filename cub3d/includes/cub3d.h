@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:18:38 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 23:52:40 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef struct		s_text
 
 typedef struct	s_ray
 {
-	int		posx; //position x du joueur
-	int     posy; //position y du joueur
+	double		posx; //position x du joueur
+	double    posy; //position y du joueur
 	double		dirx; //vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
 	double		diry; //vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double		planx; //vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
