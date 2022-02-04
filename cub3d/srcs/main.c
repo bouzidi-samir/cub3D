@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/03 14:29:13 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 13:23:57 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_parsing(char *file, t_datastock *datacube)
 }
 //fonction qui dessine une image entière et lit les données à chaque fois.
 
-int init_display(t_datastock *datacube)
+int start_game(t_datastock *datacube)
 {	
 	ft_init_raycast(datacube);
 	datacube->mlx_ptr = mlx_init();
@@ -82,7 +82,7 @@ int init_display(t_datastock *datacube)
 	datacube->three_d.img_data = (int *)mlx_get_data_addr(datacube->three_d.img, &datacube->three_d.
 			bpp, &datacube->three_d.size_line, &datacube->three_d.endian);
 	ft_raycasting(datacube);
-	init_minimap(datacube);
+	//init_minimap(datacube);
 	mlx_hook(datacube->mlx_win, 17, 0, ft_exit, datacube);
 	mlx_hook(datacube->mlx_win, 2, 1L << 0, moove_player, datacube);
 	mlx_hook(datacube->mlx_win, 33, 1L << 17, ft_exit, datacube);
@@ -103,7 +103,7 @@ int main(int ac, char **av)
         if (check_filename(av[1], datacube) == 1)
             return (1);
         ft_parsing(av[1], datacube);        
-		if (check_error(av[1], datacube) == 1 || init_display(datacube) == 1)
+		if (check_error(av[1], datacube) == 1 || start_game(datacube) == 1)
 			return (1);
 	}
     else

@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/02 15:55:16 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 13:22:35 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void free_data(t_datastock *datacube);
 void	free_tab(char **tab);
 void fill_img(int *img, int color, int width, int height);
 void fill_minimap(t_datastock *datacube);
-int init_display(t_datastock *datacube);
+int start_game(t_datastock *datacube);
 void init_minimap(t_datastock *datacube);
 int moove_player(int keycode, t_datastock *datacube);
 int	texture_parse(t_datastock *datacube);
@@ -158,5 +158,6 @@ void	ft_init_raycast(t_datastock *datacube);
 void	ft_init_raycast2(t_datastock *datacube);
 void	ft_init_raycast3(t_datastock *datacube);
 int		ft_raycasting(t_datastock *datacube);
+int		ft_col_draw(t_datastock *datacube);
 
 #endif

@@ -6,13 +6,34 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:19:05 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/03 15:57:32 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/04 13:28:22 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-// fonction sui fait avancer le rayon jusqu'a qu'il touche un mur
+// Calcul de la distance entre le joueur et le mur 
+
+void	ft_draw_distance(t_datastock *datacube)
+{
+	if (datacube->raycast.side == 0)
+		datacube->raycast.perpwalldist = ((double)datacube->raycast.mapx - \
+				datacube->raycast.posx + (1 - (double)datacube->raycast.
+				stepx) / 2) / datacube->raycast.raydirx;
+	else
+		datacube->raycast.perpwalldist = ((double)datacube->raycast.mapy - \
+				datacube->raycast.posy + (1 - (double)datacube->raycast.
+				stepy) / 2) / datacube->raycast.raydiry;
+	datacube->raycast.lineheight = (int)(datacube->ry / datacube->raycast.perpwalldist);
+	datacube->raycast.drawstart = -datacube->raycast.lineheight / 2 + datacube->ry / 2;
+	if (datacube->raycast.drawstart < 0)
+		datacube->raycast.drawstart = 0;
+	datacube->raycast.drawend = datacube->raycast.lineheight / 2 + datacube->ry / 2;
+	if (datacube->raycast.drawend >= datacube->ry || datacube->raycast.drawend < 0)
+		datacube->raycast.drawend = datacube->ry - 1;
+}
+
+// fonction qui fait avancer le rayon jusqu'a qu'il touche un mur
 
 void	ft_ray_progress(t_datastock *datacube)
 {
@@ -33,7 +54,7 @@ void	ft_ray_progress(t_datastock *datacube)
 		if (datacube->map[datacube->raycast.mapx][datacube->raycast.mapy] == '1')
 			datacube->raycast.hit = 1;
 	}
-	//ft_ray_progress(datacube);
+	ft_draw_distance(datacube);
 }
 
 void	ft_get_distance(t_datastock *datacube)
@@ -74,11 +95,10 @@ int		ft_raycasting(t_datastock *datacube)
 	{
 		ft_init_raycast2(datacube);
 		ft_get_distance(datacube);
-		//ft_color_column(recup);		
+		ft_col_draw(datacube);		
 		datacube->raycast.x++;
 	}
-	//mlx_put_image_to_window(recup->data.mlx_ptr, recup->data.mlx_win,
-			//recup->data.img, 0, 0);
-	
+	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,
+			datacube->three_d.img, 0, 0);
 	return (0);
 }
