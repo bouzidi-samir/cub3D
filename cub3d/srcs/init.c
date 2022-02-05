@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:14 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 00:08:56 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 14:12:06 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void ft_init_datastock(t_datastock *datacube)
 	datacube->err = 0;
 	datacube->bad_char = 0;
 	datacube->wrongwall = 0;
+	datacube->rx_bloc = 0;
+    datacube->ry_bloc = 0;
 	datacube->dx = 0;
     datacube->dy = 0;
     datacube->depart = 'o';

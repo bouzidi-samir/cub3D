@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:19:05 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 13:58:30 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 15:23:16 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ int		ft_raycasting(t_datastock *datacube)
 	}
 	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,
 			datacube->three_d.img, 0, 0);
-	//init_minimap(datacube);
+	init_minimap(datacube);
+	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->mini.posx, datacube->mini.posy);
 	front_back(datacube);
 	ft_left_right(datacube);
 	rotate_right_left(datacube);

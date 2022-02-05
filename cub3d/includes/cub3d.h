@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:52:40 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 15:20:31 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_display
     int     *data_empty;
     int    *img_data;
     int    *img_data2;
+    int     posx;
+    int     posy;
     int     bpp;
 	int     size_line;
 	int     endian;    
@@ -108,6 +110,8 @@ typedef struct s_datastock
     int ry;
     int rx_mini;
     int ry_mini;
+    int rx_bloc;
+    int ry_bloc;
     int f;
     int c;
     int ret;

@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 13:57:42 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 15:22:14 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void fill_minimap(t_datastock *datacube)
 	cy = 0;	
 	while (y < datacube->height)
 	{
-		cx = -20;
+		cx = -datacube->rx_bloc;
 		x = 0;
 		while (x < datacube->width)
 		{
-			cx += 20;
+			cx += datacube->rx_bloc;
 			if (datacube->map[y][x] == '1')	
 				mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img_wall, cx, cy);
 			if (datacube->map[y][x] == '0')	
@@ -77,13 +77,13 @@ void fill_minimap(t_datastock *datacube)
 			
 				if (datacube->raycast.posx == 0 && datacube->raycast.posy == 0)
 				{
-					datacube->raycast.posx = cx;
-					datacube->raycast.posy = cy;
+					//datacube->mini.posx = cx;
+					//datacube->mini.posy = cy;
 				}
 			}
 			x++;
 		}
-		cy += 20;
+		cy += datacube->ry_bloc;
 		y++;
 	}
 }
@@ -94,23 +94,25 @@ int init_minimap(t_datastock *datacube)
 	int     size_line;
 	int     endian;
 
-	datacube->rx_mini = datacube->rx / 2;
-	datacube->ry_mini = datacube->ry / 2;
-	datacube->mini.img =  mlx_new_image(datacube->mlx_ptr, 20 * datacube->width, 20 * datacube->height);
+	datacube->rx_bloc = datacube->rx / 30;
+	datacube->ry_bloc = datacube->ry / 30;
+	datacube->rx_mini = datacube->rx_bloc * datacube->width;
+	datacube->ry_mini = datacube->ry_bloc * datacube->height;
+	datacube->mini.img =  mlx_new_image(datacube->mlx_ptr, datacube->rx_mini, datacube->ry_mini);
 	datacube->mini.img_data = (int *)mlx_get_data_addr(datacube->mini.img, &bpp, &size_line, &endian);
-	fill_img(datacube->mini.img_data, 025500, 20 * datacube->width, 20 * datacube->height);
+	fill_img(datacube->mini.img_data, 025500, datacube->rx_mini, datacube->ry_mini);
 	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img, 0, 0);
-	datacube->mini.img_player =  mlx_new_image(datacube->mlx_ptr, 10, 10);
-	datacube->mini.img_wall  =  mlx_new_image(datacube->mlx_ptr, 20, 20);
-	datacube->mini.img_empty  =  mlx_new_image(datacube->mlx_ptr, 20, 20);
+	datacube->mini.img_player =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc / 2, datacube->ry_bloc / 2);
+	datacube->mini.img_wall  =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc, datacube->ry_bloc);
+	datacube->mini.img_empty  =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc, datacube->ry_bloc );
 	datacube->mini.data_wall = (int *)mlx_get_data_addr(datacube->mini.img_wall, &bpp, &size_line, &endian);
 	datacube->mini.data_player = (int *)mlx_get_data_addr(datacube->mini.img_player, &bpp, &size_line, &endian);
 	datacube->mini.data_empty = (int *)mlx_get_data_addr(datacube->mini.img_empty, &bpp, &size_line, &endian);
-	fill_img(datacube->mini.data_wall, 135245251, 20, 20);			
-	fill_img(datacube->mini.data_empty, 025500, 20, 20);
-	fill_img(datacube->mini.data_player, 11714279, 10, 10);
+	fill_img(datacube->mini.data_wall, 135245251, datacube->rx_bloc, datacube->ry_bloc);			
+	fill_img(datacube->mini.data_empty, 025500, datacube->rx_bloc, datacube->ry_bloc);
+	fill_img(datacube->mini.data_player, 12414212, datacube->rx_bloc / 2, datacube->ry_bloc / 2);
 	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
-	//fill_minimap(datacube);
-	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
+	fill_minimap(datacube);
+	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.mapx, datacube->raycast.mapy);
 	return (0);
 }
