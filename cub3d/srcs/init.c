@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:14 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:40:54 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 00:08:56 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ void	ft_init_raycast2(t_datastock *datacube)
 						datacube->raycast.camerax;
 	datacube->raycast.mapx = (int)datacube->raycast.posx;
 	datacube->raycast.mapy = (int)datacube->raycast.posy;
-	datacube->raycast.movespeed = 0.1;
-	datacube->raycast.rotspeed = 0.033 * 1.8;
+	datacube->raycast.movespeed = 0.3;
+	datacube->raycast.rotspeed = 0.033 * 2.8;
 	ft_init_raycast3(datacube);
 }
 

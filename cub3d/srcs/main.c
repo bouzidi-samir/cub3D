@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:06:22 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 00:01:42 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int start_game(t_datastock *datacube)
 		ft_error(datacube, 3);
 		return (1);
 	}
-	//datacube->mlx_win = mlx_new_window(datacube->mlx_ptr, datacube->rx, datacube->ry, "Hello world!");
 	datacube->three_d.img = mlx_new_image(datacube->mlx_ptr, datacube->rx, datacube->ry);
 	datacube->three_d.img_data = (int *)mlx_get_data_addr(datacube->three_d.img, &datacube->three_d.
 			bpp, &datacube->three_d.size_line, &datacube->three_d.endian);

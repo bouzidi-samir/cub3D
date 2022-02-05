@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 11:44:39 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/01 15:07:37 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 13:27:41 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,5 @@ int		parsing_map(char *fichier, t_datastock *datacube)
 		free(str);
 	}
 	close(fd);
-    //ft_init_sprite(recup);
 	return (0);
 }

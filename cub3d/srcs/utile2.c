@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/01 14:38:09 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 13:47:56 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		is_wall(char *str)
 	int i;
 
 	i = 0;
+	while (str[i] == ' ')
+		i++;
 	while (str[i] != '\0')
 	{
 		if (str[i] != '1')

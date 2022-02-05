@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:58:24 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 13:57:42 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int moove_player(int keycode, t_datastock *datacube)
 		datacube->raycast.posy--;
     if (keycode == BOTTOM && datacube->map[((int)datacube->raycast.posy + 10) / 40][((int)datacube->raycast.posx)/ 40] != '1') 
         datacube->raycast.posy++;
-    //ft_putnbr_fd(datacube->raycast.posy, 1);
 	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img, 0, 0);
 	fill_minimap(datacube);
     //mlx_destroy_image(datacube->display.mlx_ptr, datacube->display.img_player);
@@ -110,8 +109,8 @@ int init_minimap(t_datastock *datacube)
 	fill_img(datacube->mini.data_wall, 135245251, 20, 20);			
 	fill_img(datacube->mini.data_empty, 025500, 20, 20);
 	fill_img(datacube->mini.data_player, 11714279, 10, 10);
-	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
-	fill_minimap(datacube);
+	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
+	//fill_minimap(datacube);
 	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
 	return (0);
 }

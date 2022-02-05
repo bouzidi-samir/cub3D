@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:31:12 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/01 21:51:00 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 13:48:20 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void fill_map(t_datastock *datacube)
 {
     int	i;
 	int	j;
-
+	
 	i = 0;
     while (i < datacube->height)
 	{
@@ -35,8 +35,6 @@ void fill_map(t_datastock *datacube)
         datacube->map[i][j] = '\0';
         i++;
 	}
-    //if (is_wall(datacube->map[0]) == 1 || is_wall(datacube->map[datacube->height -1]) == 1)
-    //        datacube->wrongwall = 1;
 }
 
 int		get_depart_position(char c, t_datastock *datacube, int i, int j)
