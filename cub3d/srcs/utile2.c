@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 13:47:56 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 17:48:10 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,12 @@ int ft_error(t_datastock *datacube, int err)
 		ft_putendl_fd("Error: The wall is not close", 2);
 	err = 0;
 	datacube->err = 1;
+	free_data(datacube);
 	return (0);
 }
 
 int		ft_exit(t_datastock *datcube)
 {
-//	if (recup->indicateur3 == 0)
-//		ft_error(recup, "Non jrigole\n");
 	if (datcube->three_d.img)
 		mlx_destroy_image(datcube->mlx_ptr, datcube->three_d.img);
 	if (datcube->text[0].img)
@@ -91,7 +90,7 @@ int		ft_exit(t_datastock *datcube)
 		mlx_destroy_image(datcube->mlx_ptr, datcube->text[3].img);
 	if (datcube->mlx_win)
 		mlx_destroy_window(datcube->mlx_ptr, datcube->mlx_win);
-	free_data(datcube);
+	//free_data(datcube);
 	datcube->rx = 0;
 	exit(0);
 }

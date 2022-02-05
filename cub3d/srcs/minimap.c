@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 16:50:38 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 17:02:38 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void fill_minimap(t_datastock *datacube)
 			
 				if (datacube->raycast.posx == 0 && datacube->raycast.posy == 0)
 				{
-					//datacube->mini.posx = cx;
-					//datacube->mini.posy = cy;
+					datacube->mini.posx = cx;
+					datacube->mini.posy = cy;
 				}
 			}
 			x++;
@@ -94,8 +94,8 @@ int init_minimap(t_datastock *datacube)
 	int     size_line;
 	int     endian;
 
-	datacube->mini.posx = datacube->raycast.posx * datacube->rx_bloc;
-	datacube->mini.posy = datacube->raycast.posy * datacube->ry_bloc;
+	datacube->mini.posx = datacube->depy * datacube->ry_bloc;
+	datacube->mini.posy = datacube->depx * datacube->rx_bloc;
 	datacube->rx_bloc = datacube->rx / 30;
 	datacube->ry_bloc = datacube->ry / 30;
 	datacube->rx_mini = datacube->rx_bloc * datacube->width;
