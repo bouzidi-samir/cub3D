@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 15:22:14 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 16:50:38 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int init_minimap(t_datastock *datacube)
 	int     size_line;
 	int     endian;
 
+	datacube->mini.posx = datacube->raycast.posx * datacube->rx_bloc;
+	datacube->mini.posy = datacube->raycast.posy * datacube->ry_bloc;
 	datacube->rx_bloc = datacube->rx / 30;
 	datacube->ry_bloc = datacube->ry / 30;
 	datacube->rx_mini = datacube->rx_bloc * datacube->width;
@@ -111,8 +113,7 @@ int init_minimap(t_datastock *datacube)
 	fill_img(datacube->mini.data_wall, 135245251, datacube->rx_bloc, datacube->ry_bloc);			
 	fill_img(datacube->mini.data_empty, 025500, datacube->rx_bloc, datacube->ry_bloc);
 	fill_img(datacube->mini.data_player, 12414212, datacube->rx_bloc / 2, datacube->ry_bloc / 2);
-	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.posx, datacube->raycast.posy);
 	fill_minimap(datacube);
-	//mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,datacube->mini.img_player, datacube->raycast.mapx, datacube->raycast.mapy);
+	mlx_put_image_to_window(datacube->mlx_ptr,datacube->mlx_win,datacube->mini.img_player, datacube->mini.posx, datacube->mini.posy);
 	return (0);
 }

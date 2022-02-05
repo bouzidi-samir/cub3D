@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:04:04 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:38:36 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 16:46:00 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	front_back(t_datastock *datacube)
 		if (datacube->map[(int)(datacube->raycast.posx)][(int)(datacube->raycast.posy +
 					(datacube->raycast.diry * datacube->raycast.movespeed * 2))] == '0')
 			datacube->raycast.posy += datacube->raycast.diry * datacube->raycast.movespeed;
+		datacube->mini.posy -= 1;
 	}
 	if (datacube->three_d.back == 1)
 	{
@@ -31,6 +32,7 @@ void	front_back(t_datastock *datacube)
 		if (datacube->map[(int)(datacube->raycast.posx)][(int)(datacube->raycast.posy -
 					(datacube->raycast.diry * datacube->raycast.movespeed * 2))] == '0')
 			datacube->raycast.posy -= datacube->raycast.diry * datacube->raycast.movespeed;
+		datacube->mini.posy += 1;
 	}
 }
 
