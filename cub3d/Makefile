@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+         #
+#    By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:17:40 by samirbouzid       #+#    #+#              #
-#    Updated: 2022/02/05 00:24:22 by samirbouzid      ###   ########.fr        #
+#    Updated: 2022/02/10 11:41:10 by sbouzidi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CC = gcc
 FLAGS=-Wall -Wextra -Werror
 
 LIB_MY=-L libft/ -lft -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit  
-LIB_SCHOOL=-L./libft -lmlx -framework OpenGL -framework AppKit
-LIB=$(LIB_MY)
+LIB_SCHOOL= -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
+LIB=$(LIB_SCHOOL)
 
 SRCS= ./srcs/main.c \
 		./srcs/init.c \
