@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 15:20:38 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:21:08 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	rotate_right_left(t_datastock *datacube);
 void	ft_swap(t_datastock *datacube);
 int		key_press(int keycode, t_datastock *datacube);
 int		key_release(int keycode, t_datastock *datacube);
-
+int	check_len3(t_datastock *datacube);
 void	ft_draw_texture(t_datastock *datacube, int x, int y);
 void	ft_init_texture(t_datastock *datacube);
 int		ft_color_column(t_datastock *datacube);

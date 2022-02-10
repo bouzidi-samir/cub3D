@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utile.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:31:12 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 13:48:20 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 16:20:46 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,8 @@ int check_error(char *file, t_datastock *datacube)
     check_wall(datacube);
 	check_len(datacube);	
 	check_len2(datacube);
-    fill_map(datacube);
+    check_len3(datacube);
+	fill_map(datacube);
     if (datacube->bad_char != 0 || datacube->emptyline != 0 || datacube->multijoueurs != 0 
                         || datacube->player == 0 || datacube->wrongwall != 0)
     {
