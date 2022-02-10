@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 15:25:13 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 15:20:38 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <mlx.h>
 
 # define WIDTH	800
-# define HEIGHT	600
+# define HEIGHT	1200
 # define BLOC	40
 # define BLOCPLAYER	20
 # define LEFT 0
@@ -98,6 +98,7 @@ typedef struct	s_ray
 	int		drawstart; //position de debut ou il faut dessiner
 	int		drawend; //position de fin ou il faut dessiner
 	int		x; //permet de parcourir tous les rayons
+    double  ratio;
     double			movespeed;
 	double			rotspeed;
 } t_ray;
@@ -139,6 +140,7 @@ typedef struct s_datastock
     char **map;
     int				dx;
 	int				dy;
+    double  center;
     void    *mlx_ptr;
     void	*mlx_win;
     t_display three_d;

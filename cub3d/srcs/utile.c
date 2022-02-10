@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utile.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:40:56 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 17:51:53 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 15:18:02 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void free_data(t_datastock *datacube)
 		free(datacube->we);
 	if (datacube->ea != NULL) 
 		free(datacube->ea);
-	if (datacube->map != NULL)
-		free_tab(datacube->map);
+	//if (datacube->map != NULL)
+	//	free_tab(datacube->map);
 	if (datacube != NULL)
 		free(datacube);	
 }

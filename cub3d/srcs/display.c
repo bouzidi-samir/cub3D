@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 13:22:39 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 23:15:11 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 14:53:54 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,12 @@ int		ft_col_draw(t_datastock *datacube)
 	int i;
 
 	j = -1;
-	datacube->raycast.drawend = datacube->ry - datacube->raycast.drawstart;
+	datacube->raycast.ratio = ((double)WIDTH / (double)HEIGHT) / (4.0 / 3.0);
+	datacube->raycast.lineheight = ((double)HEIGHT * datacube->raycast.ratio) / (datacube->raycast.perpwalldist);
+	datacube->raycast.drawstart = datacube->center - datacube->raycast.lineheight / 2;
+	if (datacube->raycast.drawstart < 0)
+		datacube->raycast.drawstart = 0;
+	datacube->raycast.drawend = datacube->raycast.lineheight / 2 + datacube->center;
 	i = datacube->raycast.drawend;
 	while (++j < datacube->raycast.drawstart)
 		datacube->three_d.img_data[j * datacube->three_d.size_line / 4 +

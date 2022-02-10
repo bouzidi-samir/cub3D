@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:14 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 14:12:06 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 14:43:12 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void ft_init_datastock(t_datastock *datacube)
     datacube->ry_bloc = 0;
 	datacube->dx = 0;
     datacube->dy = 0;
-    datacube->depart = 'o';
+    datacube->center = HEIGHT / 2;
+	datacube->depart = 'o';
 	datacube->no = NULL; // malloc
 	datacube->so = NULL; // malloc
 	datacube->we = NULL; // malloc
@@ -75,8 +76,8 @@ void	ft_init_raycast(t_datastock *datacube)
 {
 	datacube->raycast.posx = 0;
 	datacube->raycast.posy = 0;
-    datacube->rx = 800;
-	datacube->ry = 800;
+    datacube->rx = WIDTH;
+	datacube->ry = HEIGHT;
     datacube->three_d.forward = 0;
 	datacube->three_d.back = 0;
 	datacube->three_d.left = 0;
