@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 17:48:10 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/05 17:58:29 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int ft_error(t_datastock *datacube, int err)
 
 int		ft_exit(t_datastock *datcube)
 {
+	
 	if (datcube->three_d.img)
 		mlx_destroy_image(datcube->mlx_ptr, datcube->three_d.img);
 	if (datcube->text[0].img)
