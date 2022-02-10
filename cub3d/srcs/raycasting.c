@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:19:05 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 16:22:38 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:32:21 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int		ft_raycasting(t_datastock *datacube)
 	}
 	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,
 			datacube->three_d.img, 0, 0);
-	//init_minimap(datacube);
+	init_minimap(datacube);
 	
 	front_back(datacube);
 	ft_left_right(datacube);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 15:55:42 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:33:12 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int init_minimap(t_datastock *datacube)
 
 	datacube->mini.posx = datacube->depy * datacube->ry_bloc;
 	datacube->mini.posy = datacube->depx * datacube->rx_bloc;
-	datacube->rx_bloc = datacube->rx / 30;
-	datacube->ry_bloc = datacube->ry / 30;
+	datacube->rx_bloc = datacube->rx / 30 - 1;
+	datacube->ry_bloc = datacube->ry / 30 - 1;
 	datacube->rx_mini = datacube->rx_bloc * datacube->width;
 	datacube->ry_mini = datacube->ry_bloc * datacube->height;
 	datacube->mini.img =  mlx_new_image(datacube->mlx_ptr, datacube->rx_mini, datacube->ry_mini);
