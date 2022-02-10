@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 18:20:13 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 19:13:55 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "../gnl/get_next_line.h"
 # include <mlx.h>
 
-# define WIDTH	600
-# define HEIGHT	600
+# define WIDTH	700
+# define HEIGHT	700
 # define BLOC	40
 # define BLOCPLAYER	20
 # define LEFT 0
@@ -46,8 +46,8 @@ typedef struct s_display
     int     *data_empty;
     int    *img_data;
     int    *img_data2;
-    int     posx;
-    int     posy;
+    double     posx;
+    double     posy;
     int     bpp;
 	int     size_line;
 	int     endian;    

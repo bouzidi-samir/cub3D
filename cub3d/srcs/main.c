@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 16:48:55 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 19:18:35 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int start_game(t_datastock *datacube)
 	mlx_hook(datacube->mlx_win, 2, 1L << 0, key_press, datacube);
 	mlx_loop_hook(datacube->mlx_ptr, ft_raycasting, datacube);
 	mlx_hook(datacube->mlx_win, 3, 1L << 1, key_release, datacube);
-	mlx_hook(datacube->mlx_win, 33, 1L << 17, ft_exit, datacube);
+	//mlx_hook(datacube->mlx_win, 33, 1L << 17, ft_exit, datacube);
 	mlx_loop(datacube->mlx_ptr);
 	return (0);
 }
