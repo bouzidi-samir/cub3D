@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utile.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:31:12 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 16:20:46 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:18:36 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,41 +79,6 @@ void	check_len(t_datastock *datacube)
 	}
 }
 
-void	check_len2(t_datastock *datacube)
-{
-	int	i;
-	int	j;
-	int k;
-    int	excess;
-
-	i = 0;
-	excess = 0;
-    while (i < datacube->height - 1)
-	{
-		j = 0;
-        k = 0;
-        if (i > 0)
-        {
-            j = ft_strlen(datacube->map[i]) - 1;
-		    k = ft_strlen(datacube->map[i - 1]) - 1;
-            if (j > k)
-		    {
-                excess = (j - k) - 1;
-                while (excess)
-			    {
-				    if (datacube->map[i][j -1 ] == '0' || datacube->map[i][j - 1] == 'N'
-					    || datacube->map[i][j - 1] == 'S' || datacube->map[i][j - 1] == 'W'
-						    || datacube->map[i][j -1] == 'E')
-					    datacube->wrongwall = 1;
-				    j--;
-				    excess--;
-			    }
-		    }
-        }
-        i++;
-    }
-}
-
 void	check_wall(t_datastock *datacube)
 {
 	int	i;
@@ -153,7 +118,7 @@ int check_error(char *file, t_datastock *datacube)
 		return (1);
 	}
     check_wall(datacube);
-	check_len(datacube);	
+	check_len1(datacube);	
 	check_len2(datacube);
     check_len3(datacube);
 	fill_map(datacube);

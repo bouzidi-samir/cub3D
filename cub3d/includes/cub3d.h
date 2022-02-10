@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 16:21:08 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:20:13 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "../gnl/get_next_line.h"
 # include <mlx.h>
 
-# define WIDTH	800
-# define HEIGHT	1200
+# define WIDTH	600
+# define HEIGHT	600
 # define BLOC	40
 # define BLOCPLAYER	20
 # define LEFT 0
@@ -187,6 +187,8 @@ void	rotate_right_left(t_datastock *datacube);
 void	ft_swap(t_datastock *datacube);
 int		key_press(int keycode, t_datastock *datacube);
 int		key_release(int keycode, t_datastock *datacube);
+void	check_len1(t_datastock *datacube);
+void	check_len2(t_datastock *datacube);
 int	check_len3(t_datastock *datacube);
 void	ft_draw_texture(t_datastock *datacube, int x, int y);
 void	ft_init_texture(t_datastock *datacube);

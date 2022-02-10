@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+         #
+#    By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:17:40 by samirbouzid       #+#    #+#              #
-#    Updated: 2022/02/10 11:41:10 by sbouzidi         ###   ########.fr        #
+#    Updated: 2022/02/10 18:12:37 by samirbouzid      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS=-Wall -Wextra -Werror
 
 LIB_MY=-L libft/ -lft -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit  
 LIB_SCHOOL= -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
-LIB=$(LIB_SCHOOL)
+LIB=$(LIB_MY)
 
 SRCS= ./srcs/main.c \
 		./srcs/init.c \
@@ -28,6 +28,7 @@ SRCS= ./srcs/main.c \
 		./srcs/color_parsing.c \
 		./srcs/map_parsing.c \
 		./srcs/map_utile.c \
+		./srcs/check_len.c \
 		./srcs/raycasting.c \
 		./srcs/display.c \
 		./srcs/key_detect.c \

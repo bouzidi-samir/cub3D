@@ -3,53 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 11:44:39 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 16:19:37 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:14:52 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int check_space(char *str)
-{
-	int i;
-	int space;
-
-	i = 0;
-	space = 0;
-	while (str[i] != '\0' && str[i] == ' ')
-	{
-		i++;
-	}
-	return (i);
-}
-
-int	check_len3(t_datastock *datacube)
-{
-	int	i;
-	int	j;
-	int	excess;
-
-	i = 0;
-	while (i < datacube->height - 1)
-	{
-		if (check_space(datacube->map[i + 1]) > check_space(datacube->map[i]))
-		{
-			excess = check_space(datacube->map[i + 1]);
-			j = 0;
-			while (j < excess)
-			{
-				if (datacube->map[i][j] != '1')
-					datacube->wrongwall = 1;
-				j++;
-			}
-		}
-		i++;
-	}
-	return (0);
-}
 
 int		get_map(char *str, t_datastock *datacube)
 {
