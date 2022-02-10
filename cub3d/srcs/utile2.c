@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utile2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/05 17:58:29 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 15:43:55 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,6 @@ int		is_wall(char *str)
 	}
 	return (0);
 }
-
-/*int		ft_check_wall(t_datastock *datacube)
-{
-	int i;
-
-	i = 0;
-	//ft_putchar_fd(datacube->map[1][5], 1);
-    while (i < datacube->height)
-	{
-		if (datacube->map[i][0] != '1')
-        	return (1);
-        i++;
-	}
-	i = 0;
-	while (i < datacube->height)
-	{
-		if (datacube->map[i][datacube->width - 1] != '1')
-			return (1);
-		i++;
-	}
-	return (0);
-}*/
 
 int ft_error(t_datastock *datacube, int err)
 {
@@ -76,22 +54,22 @@ int ft_error(t_datastock *datacube, int err)
 	return (0);
 }
 
-int		ft_exit(t_datastock *datcube)
+int		ft_exit(t_datastock *datacube)
 {
 	
-	if (datcube->three_d.img)
-		mlx_destroy_image(datcube->mlx_ptr, datcube->three_d.img);
-	if (datcube->text[0].img)
-		mlx_destroy_image(datcube->mlx_ptr, datcube->text[0].img);
-	if (datcube->text[1].img)
-		mlx_destroy_image(datcube->mlx_ptr, datcube->text[1].img);
-	if (datcube->text[2].img)
-		mlx_destroy_image(datcube->mlx_ptr, datcube->text[2].img);
-	if (datcube->text[3].img)
-		mlx_destroy_image(datcube->mlx_ptr, datcube->text[3].img);
-	if (datcube->mlx_win)
-		mlx_destroy_window(datcube->mlx_ptr, datcube->mlx_win);
-	//free_data(datcube);
-	datcube->rx = 0;
+	if (datacube->three_d.img)
+		mlx_destroy_image(datacube->mlx_ptr, datacube->three_d.img);
+	if (datacube->text[0].img)
+		mlx_destroy_image(datacube->mlx_ptr, datacube->text[0].img);
+	if (datacube->text[1].img)
+		mlx_destroy_image(datacube->mlx_ptr, datacube->text[1].img);
+	if (datacube->text[2].img)
+		mlx_destroy_image(datacube->mlx_ptr, datacube->text[2].img);
+	if (datacube->text[3].img)
+		mlx_destroy_image(datacube->mlx_ptr, datacube->text[3].img);
+	if (datacube->mlx_win)
+		mlx_destroy_window(datacube->mlx_ptr, datacube->mlx_win);
+	free_data(datacube);
+	datacube->rx = 0;
 	exit(0);
 }

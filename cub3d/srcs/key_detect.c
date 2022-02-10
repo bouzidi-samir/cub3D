@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_detect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
+/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:34:41 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/04 16:30:54 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/10 15:44:26 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		key_press(int keycode, t_datastock *datacube)
 {
-	if (keycode == TOP)
+	if (keycode == 53)
+		ft_exit(datacube);
+	else if (keycode == TOP)
 		datacube->three_d.forward = 1;
 	else if (keycode == BOTTOM)
 		datacube->three_d.back = 1;
