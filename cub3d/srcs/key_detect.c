@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key_detect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:34:41 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 15:44:26 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:10:38 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int		key_press(int keycode, t_datastock *datacube)
+int	key_press(int keycode, t_datastock *datacube)
 {
 	if (keycode == 53)
 		ft_exit(datacube);
@@ -31,7 +31,7 @@ int		key_press(int keycode, t_datastock *datacube)
 	return (1);
 }
 
-int		key_release(int keycode, t_datastock *datacube)
+int	key_release(int keycode, t_datastock *datacube)
 {
 	if (keycode == TOP)
 		datacube->three_d.forward = 0;
