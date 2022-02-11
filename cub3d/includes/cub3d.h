@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 16:17:02 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 22:22:28 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int	get_next_line(int fd, char **line);
 void print_map(char **map);
 int ft_error(t_datastock *datacube, int err);
 void free_data(t_datastock *datacube);
-void	free_tab(char **tab);
+void	free_tab(char **tab, t_datastock *datacube);
 void fill_img(int *img, int color, int width, int height);
 void fill_minimap(t_datastock *datacube);
 int start_game(t_datastock *datacube);

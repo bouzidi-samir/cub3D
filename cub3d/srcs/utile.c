@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:40:56 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 15:16:54 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 22:24:20 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ void	free_data(t_datastock *datacube)
 		free(datacube->we);
 	if (datacube->ea != NULL)
 		free(datacube->ea);
-	//if (datacube->map != NULL)
-	//	free_tab(datacube->map);
+	if (datacube->map != NULL)
+		free_tab(datacube->map, datacube);
 	if (datacube != NULL)
 		free(datacube);
 }
 
-void	free_tab(char **tab)
+void	free_tab(char **tab, t_datastock *datacube)
 {
 	int	i;
 	int	size;
@@ -86,7 +86,7 @@ void	free_tab(char **tab)
 	size = 0;
 	while (tab[size])
 		size++;
-	while (i < size)
+	while (i < datacube->height)
 	{
 		free(tab[i]);
 		i++;
