@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utile2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 15:43:55 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:18:48 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int		is_wall(char *str)
+int	is_wall(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] == ' ')
@@ -28,7 +28,7 @@ int		is_wall(char *str)
 	return (0);
 }
 
-int ft_error(t_datastock *datacube, int err)
+int	ft_error(t_datastock *datacube, int err)
 {
 	if (err == 3)
 		ft_putendl_fd("Error: Problem with the xpm file", 2);
@@ -38,7 +38,7 @@ int ft_error(t_datastock *datacube, int err)
 		ft_putendl_fd("Error: Colors informations are wrong", 2);
 	if (datacube->width == 0 || datacube->height == 0)
 		ft_putendl_fd("Error: No map in the file", 2);
-	if (datacube->emptyline != 0 && datacube->inmap == 1) 
+	if (datacube->emptyline != 0 && datacube->inmap == 1)
 		ft_putendl_fd("Error: The map has an empty line", 2);
 	if (datacube->bad_char != 0)
 		ft_putendl_fd("Error: The map has a wrong character", 2);
@@ -54,9 +54,8 @@ int ft_error(t_datastock *datacube, int err)
 	return (0);
 }
 
-int		ft_exit(t_datastock *datacube)
+int	ft_exit(t_datastock *datacube)
 {
-	
 	if (datacube->three_d.img)
 		mlx_destroy_image(datacube->mlx_ptr, datacube->three_d.img);
 	if (datacube->text[0].img)

@@ -6,7 +6,7 @@
 #    By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:17:40 by samirbouzid       #+#    #+#              #
-#    Updated: 2022/02/10 18:12:37 by samirbouzid      ###   ########.fr        #
+#    Updated: 2022/02/11 15:21:52 by samirbouzid      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS= ./srcs/main.c \
 		./srcs/key_detect.c \
 		./srcs/moove.c \
 		./srcs/utile.c \
-		./srcs/test.c \
 		./srcs/utile2.c \
 		./srcs/minimap.c \
 		./srcs/get_next_line.c \
@@ -51,7 +50,6 @@ BONUS_SRCS= ./srcs/main.c \
 		./srcs/key_detect.c \
 		./srcs/moove.c \
 		./srcs/utile.c \
-		./srcs/test.c \
 		./srcs/utile2.c \
 		./srcs/minimap.c \
 		./srcs/get_next_line.c \
