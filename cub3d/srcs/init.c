@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 13:57:14 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 14:43:12 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/11 18:48:01 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,27 @@ void	ft_init_dir(t_datastock *datacube)
 		datacube->raycast.planx = -0.66;
 }
 
-void ft_init_datastock(t_datastock *datacube)
+void	ft_init_datastock2(t_datastock *datacube)
 {
-	datacube->bad_xpm = 0;
-	datacube->i = 0;
-    datacube->f = -1;
-    datacube->c = -1;
-    datacube->ret = 0;
-    datacube->indicateur2 = 0;
-    datacube->width = 0;
-    datacube->height = 0;
-    datacube->rx = 0;
-	datacube->ry = 0;
-	datacube->rx_mini = 0;
-	datacube->ry_mini = 0;
-    datacube->bad_filename = 0;
-    datacube->path_size = 0;	
-	datacube->error = 0;
-	datacube->inmap = 0;
-	datacube->count = 0;
-	datacube->emptyline = 0;
-	datacube->depx = 0;
-	datacube->depy = 0;
-	datacube->player = 0;
-	datacube->multijoueurs = 0;
-	datacube->err = 0;
-	datacube->bad_char = 0;
 	datacube->wrongwall = 0;
-	datacube->rx_bloc = 0;
-    datacube->ry_bloc = 0;
 	datacube->dx = 0;
-    datacube->dy = 0;
-    datacube->center = HEIGHT / 2;
+	datacube->dy = 0;
+	datacube->center = HEIGHT / 2;
 	datacube->depart = 'o';
-	datacube->no = NULL; // malloc
-	datacube->so = NULL; // malloc
-	datacube->we = NULL; // malloc
-	datacube->ea = NULL; // malloc
-	datacube->map = NULL; // malloc
+	datacube->no = NULL;
+	datacube->so = NULL;
+	datacube->we = NULL;
+	datacube->ea = NULL;
+	datacube->map = NULL;
 }
 
 void	ft_init_raycast(t_datastock *datacube)
 {
 	datacube->raycast.posx = 0;
 	datacube->raycast.posy = 0;
-    datacube->rx = WIDTH;
+	datacube->rx = WIDTH;
 	datacube->ry = HEIGHT;
-    datacube->three_d.forward = 0;
+	datacube->three_d.forward = 0;
 	datacube->three_d.back = 0;
 	datacube->three_d.left = 0;
 	datacube->three_d.right = 0;
@@ -95,13 +69,14 @@ void	ft_init_raycast(t_datastock *datacube)
 
 void	ft_init_raycast2(t_datastock *datacube)
 {
-    datacube->raycast.hit = 0;
+	datacube->raycast.hit = 0;
 	datacube->raycast.perpwalldist = 0;
-	datacube->raycast.camerax = 2 * datacube->raycast.x / (double)datacube->rx - 1;
-	datacube->raycast.raydirx = datacube->raycast.dirx + datacube->raycast.planx * \
-						datacube->raycast.camerax;
-	datacube->raycast.raydiry = datacube->raycast.diry + datacube->raycast.plany * \
-						datacube->raycast.camerax;
+	datacube->raycast.camerax = 2 * datacube->raycast.x
+		/ (double)datacube->rx - 1;
+	datacube->raycast.raydirx = datacube->raycast.dirx + datacube->raycast.planx
+		* datacube->raycast.camerax;
+	datacube->raycast.raydiry = datacube->raycast.diry + datacube->raycast.plany
+		* datacube->raycast.camerax;
 	datacube->raycast.mapx = (int)datacube->raycast.posx;
 	datacube->raycast.mapy = (int)datacube->raycast.posy;
 	datacube->raycast.movespeed = 0.3;
@@ -117,14 +92,14 @@ void	ft_init_raycast3(t_datastock *datacube)
 		datacube->raycast.deltadistx = 1;
 	else
 		datacube->raycast.deltadistx = sqrt(1 + (datacube->raycast.raydiry
-			* datacube->raycast.raydiry) / (datacube->raycast.raydirx *
-			datacube->raycast.raydirx));
+					* datacube->raycast.raydiry) / (datacube->raycast.raydirx
+					* datacube->raycast.raydirx));
 	if (datacube->raycast.raydirx == 0)
 		datacube->raycast.deltadisty = 0;
 	else if (datacube->raycast.raydiry == 0)
 		datacube->raycast.deltadisty = 1;
 	else
-		datacube->raycast.deltadisty = sqrt(1 + (datacube->raycast.raydirx *
-			datacube->raycast.raydirx) / (datacube->raycast.raydiry *
-			datacube->raycast.raydiry));
+		datacube->raycast.deltadisty = sqrt(1 + (datacube->raycast.raydirx
+					* datacube->raycast.raydirx) / (datacube->raycast.raydiry
+					* datacube->raycast.raydiry));
 }

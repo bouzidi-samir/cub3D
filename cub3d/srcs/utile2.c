@@ -6,11 +6,24 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:55:45 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 15:18:48 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 16:05:29 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	check_around(t_datastock *datacube, int i, int j, int excess)
+{
+	while (excess)
+	{
+		if (datacube->map[i][j - 1] == '0' || datacube->map[i][j - 1] == 'N'
+			|| datacube->map[i][j - 1] == 'S' || datacube->map[i][j - 1] == 'W'
+				|| datacube->map[i][j - 1] == 'E')
+			datacube->wrongwall = 1;
+		j--;
+		excess--;
+	}
+}
 
 int	is_wall(char *str)
 {

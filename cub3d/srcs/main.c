@@ -6,11 +6,40 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 12:34:11 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 18:39:28 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	ft_init_datastock(t_datastock *datacube)
+{
+	datacube->bad_xpm = 0;
+	datacube->i = 0;
+	datacube->f = -1;
+	datacube->c = -1;
+	datacube->ret = 0;
+	datacube->indicateur2 = 0;
+	datacube->width = 0;
+	datacube->height = 0;
+	datacube->rx = 0;
+	datacube->ry = 0;
+	datacube->rx_mini = 0;
+	datacube->ry_mini = 0;
+	datacube->bad_filename = 0;
+	datacube->path_size = 0;
+	datacube->error = 0;
+	datacube->inmap = 0;
+	datacube->count = 0;
+	datacube->emptyline = 0;
+	datacube->depx = 0;
+	datacube->depy = 0;
+	datacube->player = 0;
+	datacube->multijoueurs = 0;
+	datacube->err = 0;
+	datacube->bad_char = 0;
+	ft_init_datastock2(datacube);
+}
 
 int	check_filename(char *str, t_datastock *datacube)
 {
@@ -69,7 +98,7 @@ int	ft_parsing(char *file, t_datastock *datacube)
 	close(fd);
 	return (0);
 }
-//fonction qui dessine une image entière et lit les données à chaque fois.
+//fonction qui dessine une image en	tière et lit les données à chaque fois.
 
 int	start_game(t_datastock *datacube)
 {	

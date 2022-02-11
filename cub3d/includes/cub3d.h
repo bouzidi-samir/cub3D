@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 11:33:09 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 16:17:02 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ int		ft_exit(t_datastock *datcube);
 int		get_depart_position(char c, t_datastock *datacube, int i, int j);
 int		is_wall(char *str);
 void ft_init_datastock(t_datastock *datacube);
+void ft_init_datastock2(t_datastock *datacube);
 void	ft_init_raycast(t_datastock *datacube);
 void	ft_init_raycast2(t_datastock *datacube);
 void	ft_init_raycast3(t_datastock *datacube);
@@ -188,6 +189,7 @@ void	ft_swap(t_datastock *datacube);
 int		key_press(int keycode, t_datastock *datacube);
 int		key_release(int keycode, t_datastock *datacube);
 int     check_space(char *str);
+void check_around(t_datastock *datacube, int i, int j, int excess);
 void    check_len(t_datastock *datacube);
 void	check_len1(t_datastock *datacube);
 void	check_len2(t_datastock *datacube);

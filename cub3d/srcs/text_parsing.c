@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:13:31 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 14:33:34 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 18:39:47 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,23 @@ int	texture_parse(t_datastock *datacube)
 	datacube->text[0].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
 			datacube->no, &(datacube->text[0].width),
 			&(datacube->text[0].height));
+	if (!datacube->text[0].img)
+		return (1);
 	datacube->text[1].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
 			datacube->so, &(datacube->text[1].width),
 			&(datacube->text[1].height));
+	if (!datacube->text[1].img)
+		return (1);
 	datacube->text[2].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
 			datacube->we, &(datacube->text[2].width),
 			&(datacube->text[2].height));
+	if (!datacube->text[2].img)
+		return (1);
 	datacube->text[3].img = mlx_xpm_file_to_image(datacube->mlx_ptr,
 			datacube->ea, &(datacube->text[3].width),
 			&(datacube->text[3].height));
+	if (!datacube->text[3].img)
+		return (1);
 	ft_get_texture_adress(datacube);
 	return (0);
 }
