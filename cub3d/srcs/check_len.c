@@ -6,24 +6,36 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:12:12 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 18:21:16 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 11:34:53 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int check_space(char *str)
+
+int	check_len4(t_datastock *datacube)
 {
-	int i;
-	int space;
+	int	i;
+	int	j;
+	int	excess;
 
 	i = 0;
-	space = 0;
-	while (str[i] != '\0' && str[i] == ' ')
+	while (i < datacube->height - 1)
 	{
+		if (i > 0 && check_space(datacube->map[i - 1]) > check_space(datacube->map[i]))
+		{
+			excess = check_space(datacube->map[i - 1]);
+			j = 0;
+			while (j < excess)
+			{
+				if (datacube->map[i][j] != '1')
+					datacube->wrongwall = 1;
+				j++;
+			}
+		}
 		i++;
 	}
-	return (i);
+	return (0);
 }
 
 int	check_len3(t_datastock *datacube)
@@ -111,4 +123,12 @@ void	check_len2(t_datastock *datacube)
         }
         i++;
     }
+}
+
+void check_len(t_datastock *datacube)
+{
+	check_len1(datacube);	
+	check_len2(datacube);
+    check_len3(datacube);
+	check_len4(datacube);
 }

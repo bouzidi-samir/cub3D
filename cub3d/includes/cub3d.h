@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 21:42:28 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 19:13:55 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 11:33:09 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ void	rotate_right_left(t_datastock *datacube);
 void	ft_swap(t_datastock *datacube);
 int		key_press(int keycode, t_datastock *datacube);
 int		key_release(int keycode, t_datastock *datacube);
+int     check_space(char *str);
+void    check_len(t_datastock *datacube);
 void	check_len1(t_datastock *datacube);
 void	check_len2(t_datastock *datacube);
 int	check_len3(t_datastock *datacube);

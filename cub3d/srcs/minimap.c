@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:19:38 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 22:16:08 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 11:24:44 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int init_minimap(t_datastock *datacube)
 	int     endian;
 
 	//ft_putnbr_fd(datacube->raycast.posx, 1);
-	datacube->mini.posx = (double)datacube->raycast.posy * datacube->rx_bloc ;
-	datacube->mini.posy = (double)datacube->raycast.posx * datacube->ry_bloc ;
+	datacube->mini.posx = ((double)datacube->raycast.posy - 0.5) * datacube->rx_bloc ;
+	datacube->mini.posy = ((double)datacube->raycast.posx - 0.5) * datacube->ry_bloc ;
 	datacube->rx_bloc = datacube->rx / 30 - 1;
 	datacube->ry_bloc = datacube->ry / 30 - 1;
 	datacube->rx_mini = datacube->rx_bloc * datacube->width;
@@ -104,7 +104,7 @@ int init_minimap(t_datastock *datacube)
 	datacube->mini.img_data = (int *)mlx_get_data_addr(datacube->mini.img, &bpp, &size_line, &endian);
 	fill_img(datacube->mini.img_data, 025500, datacube->rx_mini, datacube->ry_mini);
 	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win, datacube->mini.img, 0, 0);
-	datacube->mini.img_player =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc, datacube->ry_bloc);
+	datacube->mini.img_player =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc / 2, datacube->ry_bloc / 2);
 	datacube->mini.img_wall  =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc, datacube->ry_bloc);
 	datacube->mini.img_empty  =  mlx_new_image(datacube->mlx_ptr, datacube->rx_bloc, datacube->ry_bloc );
 	datacube->mini.data_wall = (int *)mlx_get_data_addr(datacube->mini.img_wall, &bpp, &size_line, &endian);
@@ -112,7 +112,7 @@ int init_minimap(t_datastock *datacube)
 	datacube->mini.data_empty = (int *)mlx_get_data_addr(datacube->mini.img_empty, &bpp, &size_line, &endian);
 	fill_img(datacube->mini.data_wall, 135245251, datacube->rx_bloc, datacube->ry_bloc);			
 	fill_img(datacube->mini.data_empty, 025500, datacube->rx_bloc, datacube->ry_bloc);
-	fill_img(datacube->mini.data_player, 12414212, datacube->rx_bloc, datacube->ry_bloc);
+	fill_img(datacube->mini.data_player, 12414212, datacube->rx_bloc / 2, datacube->ry_bloc / 2);
 	fill_minimap(datacube);
 	//mlx_put_image_to_window(datacube->mlx_ptr,datacube->mlx_win,datacube->mini.img_player, datacube->mini.posx, datacube->mini.posy);
 	return (0);

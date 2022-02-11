@@ -6,11 +6,25 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:31:12 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/10 18:18:36 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 11:52:13 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int check_space(char *str)
+{
+	int i;
+	int space;
+
+	i = 0;
+	space = 0;
+	while (str[i] != '\0' && str[i] == ' ')
+	{
+		i++;
+	}
+	return (i);
+}
 
 void fill_map(t_datastock *datacube)
 {
@@ -52,33 +66,6 @@ int		get_depart_position(char c, t_datastock *datacube, int i, int j)
 	return (0);
 }
 
-void	check_len(t_datastock *datacube)
-{
-	int	i;
-	int	j;
-	int	excess;
-
-	i = 0;
-	while (i < datacube->height - 1)
-	{
-		j = ft_strlen(datacube->map[i]) - 1;
-		if (datacube->map[i + 1] && j > (ft_strlen(datacube->map[i + 1]) - 1))
-		{
-			excess = j - (ft_strlen(datacube->map[i + 1]) - 1);
-			while (excess)
-			{
-				if (datacube->map[i][j] == '0' || datacube->map[i][j] == 'N'
-					|| datacube->map[i][j] == 'S' || datacube->map[i][j] == 'W'
-						|| datacube->map[i][j] == 'E')
-					datacube->wrongwall = 1;
-				j--;
-				excess--;
-			}
-		}
-		i++;
-	}
-}
-
 void	check_wall(t_datastock *datacube)
 {
 	int	i;
@@ -118,9 +105,7 @@ int check_error(char *file, t_datastock *datacube)
 		return (1);
 	}
     check_wall(datacube);
-	check_len1(datacube);	
-	check_len2(datacube);
-    check_len3(datacube);
+	check_len(datacube);	
 	fill_map(datacube);
     if (datacube->bad_char != 0 || datacube->emptyline != 0 || datacube->multijoueurs != 0 
                         || datacube->player == 0 || datacube->wrongwall != 0)
