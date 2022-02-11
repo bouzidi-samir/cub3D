@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 14:18:08 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 12:22:35 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 12:34:11 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ int	start_game(t_datastock *datacube)
 	ft_init_raycast(datacube);
 	datacube->mlx_ptr = mlx_init();
 	if ((texture_parse(datacube)) == 1)
-	{
-		ft_error(datacube, 3);
 		return (1);
-	}
 	datacube->three_d.img
 		= mlx_new_image(datacube->mlx_ptr, datacube->rx, datacube->ry);
 	datacube->three_d.img_data = (int *)mlx_get_data_addr
@@ -114,8 +111,13 @@ int	main(int ac, char **av)
 		if (check_filename(av[1], datacube) == 1)
 			return (1);
 		ft_parsing(av[1], datacube);
-		if (check_error(av[1], datacube) == 1 || start_game(datacube) == 1)
+		if (check_error(av[1], datacube) == 1)
 			return (1);
+		if (start_game(datacube) == 1)
+		{
+			ft_error(datacube, 3);
+			return (1);
+		}
 	}
 	else
 		ft_putendl_fd("Error: You must give one argument", 2);
