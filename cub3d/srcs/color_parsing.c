@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:23:09 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/11 14:02:46 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 14:20:35 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	ft_atoi_color(const char *str, t_datastock *datacube)
 	if (str[1] != ' ')
 		datacube->error = 2;
 	ft_check_data_color(str, datacube);
-	while (str[datacube->i] == ' ' || str[datacube->i] == '\t' || str[datacube->i]
-			== ',' || str[datacube->i] == '\n' || str[datacube->i] == '\r'
-			|| str[datacube->i] == '\v' || str[datacube->i] == '\f')
+	while (str[datacube->i] == ' ' || str[datacube->i] == '\t' || \
+		str[datacube->i] == ',' || str[datacube->i] == '\n' || str[datacube->i]
+		== '\r' || str[datacube->i] == '\v' || str[datacube->i] == '\f')
 	{
 		datacube->i++;
 		check = 0;
@@ -94,9 +94,9 @@ void	check_color(char **str, t_datastock *datacube)
 
 	i = 0;
 	datacube->i = 1;
-	if (datacube->width > 0 && (datacube->no == NULL || datacube->so == NULL ||
-				datacube->we == NULL || datacube->ea == NULL))
-    	datacube->error = 2;
+	if (datacube->width > 0 && (datacube->no == NULL || datacube->so == NULL
+			|| datacube->we == NULL || datacube->ea == NULL))
+		datacube->error = 2;
 	if (*str[i] == 'F')
 		datacube->f = ft_atoi_color(*str, datacube);
 	else if (*str[i] == 'C')
