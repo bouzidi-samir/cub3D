@@ -6,7 +6,7 @@
 /*   By: samirbouzidi <samirbouzidi@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 15:13:31 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/02 15:06:20 by samirbouzid      ###   ########.fr       */
+/*   Updated: 2022/02/11 14:09:01 by samirbouzid      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void check_texture(char *str, t_datastock *datacube)
 	else if (str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
 			&& str[0] != 'F' && str[0] != 'C'
 			&& str[0] > 65 && str[0] < 122)
+		datacube->error = 2;
+	else if (str[i] == 'S' && str[i + 1] != '0')
 		datacube->error = 2;
 	j++;
 }
