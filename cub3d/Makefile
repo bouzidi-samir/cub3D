@@ -6,7 +6,7 @@
 #    By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:17:40 by samirbouzid       #+#    #+#              #
-#    Updated: 2022/02/12 10:27:28 by sbouzidi         ###   ########.fr        #
+#    Updated: 2022/02/12 12:00:42 by sbouzidi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,26 +36,26 @@ SRCS= ./srcs/main.c \
 		./srcs/rotate.c \
 		./srcs/utile.c \
 		./srcs/utile2.c \
-		./srcs/minimap.c \
 		./srcs/get_next_line.c \
 		./srcs/get_next_line_utils.c \
 
 BONUS_SRCS= ./srcs/main.c \
-		./srcs/init.c \
-		./srcs/text_parsing.c \
-		./srcs/color_parsing.c \
-		./srcs/map_parsing.c \
-		./srcs/map_utile.c \
-		./srcs/raycasting.c \
-		./srcs/display.c \
-		./srcs/key_detect.c \
-		./srcs/moove.c \
-		./srcs/rotate.c \
-		./srcs/utile.c \
-		./srcs/utile2.c \
-		./srcs/minimap.c \
-		./srcs/get_next_line.c \
-		./srcs/get_next_line_utils.c \
+		./bonus/init.c \
+		./bonus/text_parsing.c \
+		./bonus/color_parsing.c \
+		./bonus/map_parsing.c \
+		./bonus/map_utile.c \
+		./bonus/check_len.c \
+		./bonus/raycasting.c \
+		./bonus/display.c \
+		./bonus/key_detect.c \
+		./bonus/moove.c \
+		./bonus/rotate.c \
+		./bonus/utile.c \
+		./bonus/utile2.c \
+		./bonus/minimap.c \
+		./bonus/get_next_line.c \
+		./bonus/get_next_line_utils.c \
 
 ifdef WITH_BONUS
 	OBJ=$(BONUS_SRCS:.c=.o)

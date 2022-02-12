@@ -6,7 +6,7 @@
 /*   By: sbouzidi <sbouzidi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:19:05 by samirbouzid       #+#    #+#             */
-/*   Updated: 2022/02/12 12:01:18 by sbouzidi         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:52:13 by sbouzidi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ int	ft_raycasting(t_datastock *datacube)
 	front_back(datacube);
 	ft_left_right(datacube);
 	rotate_right_left(datacube);
+	init_minimap(datacube);
+	mlx_put_image_to_window(datacube->mlx_ptr, datacube->mlx_win,
+		datacube->mini.img_player, datacube->mini.posx, datacube->mini.posy);
 	ft_swap(datacube);
 	return (0);
 }
